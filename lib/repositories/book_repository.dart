@@ -23,6 +23,7 @@ class BookRepository {
         throw Exception('Failed to search books: ${response.statusCode}');
       }
     } catch (e) {
+      print("error----------------->> $e");
       throw Exception('Network error: $e');
     }
   }
@@ -34,7 +35,7 @@ class BookRepository {
       
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        
+        print("response----------------->> $data");
         // Get description
         String? description;
         if (data['description'] != null) {
@@ -57,9 +58,11 @@ class BookRepository {
           description: description,
         );
       } else {
+        
         throw Exception('Failed to get book details: ${response.statusCode}');
       }
     } catch (e) {
+      print("error----------------->> $e");
       throw Exception('Network error: $e');
     }
   }
