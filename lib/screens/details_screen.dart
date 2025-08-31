@@ -117,7 +117,7 @@ class DetailsScreenContent extends StatelessWidget {
                             const SizedBox(height: 8),
                             if (state.book.authors.isNotEmpty)
                               Text(
-                                'By ${state.book.authorsString}',
+                                'By ${state.book.authors.toString().replaceAll("[", "").replaceAll("]", "") }',//authorsString
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleMedium

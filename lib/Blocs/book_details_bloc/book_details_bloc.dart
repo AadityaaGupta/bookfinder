@@ -28,6 +28,7 @@ class BookDetailsBloc extends Bloc<BookDetailsEvent, BookDetailsState> {
       if (event.book.key != null) {
         try {
           detailedBook = await repository.getBookDetails(event.book.key!);
+          print(" detailedBook----------------->> $detailedBook");
         } catch (e) {
           // If detailed fetch fails, use the original book data
           detailedBook = event.book;

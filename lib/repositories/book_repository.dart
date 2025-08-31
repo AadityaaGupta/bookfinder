@@ -38,21 +38,22 @@ class BookRepository {
         print("response----------------->> $data");
         // Get description
         String? description;
-        if (data['description'] != null) {
-          if (data['description'] is String) {
-            description = data['description'];
-          } else if (data['description']['value'] != null) {
-            description = data['description']['value'];
+        if (data['docs'] != null) {
+          if (data['docs'] is String) {
+            description = data['docs'];
+          } else if (data['docs']['value'] != null) {
+            description = data['docs']['value'];
           }
         }
         
         return Book(
+          
           key: bookKey,
           title: data['title'] ?? '',
-          authors: (data['authors'] as List<dynamic>?)
-              ?.map((author) => author['name'] ?? author.toString())
-              .toList()
-              .cast<String>() ?? [],
+          authors: data['author_name'] ,
+              // ?.map((author) => author['name'] ?? author.toString())
+              // .toList()
+              // .cast<String>() ?? [],
           coverId: data['covers']?.first?.toString(),
           firstPublishYear: data['first_publish_year'],
           description: description,
